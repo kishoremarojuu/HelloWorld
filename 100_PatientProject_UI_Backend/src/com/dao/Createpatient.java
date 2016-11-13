@@ -17,7 +17,8 @@ public class Createpatient {
 		PreparedStatement ps  = con.prepareStatement("insert into patientTenet values(?,?,?,?)");
 		
 		
-			
+			System.out.println("this is the create patient logic ");
+			System.out.println("this is the first commit in gitHUb ");
 			System.out.println(con);
 			
 			ps.setInt(1, patient.getId());
