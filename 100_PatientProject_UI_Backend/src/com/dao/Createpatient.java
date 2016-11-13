@@ -20,6 +20,7 @@ public class Createpatient {
 			System.out.println("this is the create patient logic ");
 			System.out.println("this is the first commit in gitHUb ");
 			System.out.println(con);
+			System.out.println("this is the second change in githu");
 			
 			ps.setInt(1, patient.getId());
 			ps.setString(2,patient.getName());
