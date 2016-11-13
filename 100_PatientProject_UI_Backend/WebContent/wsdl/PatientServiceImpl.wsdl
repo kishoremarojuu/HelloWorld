@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://business.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://business.com" xmlns:intf="http://business.com" xmlns:tns1="http://model.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://business.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model.com"/>
+   <element name="addPatient">
+    <complexType>
+     <sequence>
+      <element name="patient" type="tns1:Patient"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addPatientResponse">
+    <complexType>
+     <sequence>
+      <element name="addPatientReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://model.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Patient">
+    <sequence>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="location" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="addPatientResponse">
+
+      <wsdl:part element="impl:addPatientResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addPatientRequest">
+
+      <wsdl:part element="impl:addPatient" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="PatientServiceImpl">
+
+      <wsdl:operation name="addPatient">
+
+         <wsdl:input message="impl:addPatientRequest" name="addPatientRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addPatientResponse" name="addPatientResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="PatientServiceImplSoapBinding" type="impl:PatientServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addPatient">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addPatientRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addPatientResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="PatientServiceImplService">
+
+      <wsdl:port binding="impl:PatientServiceImplSoapBinding" name="PatientServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/100_PatientProject_UI_Backend/services/PatientServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
